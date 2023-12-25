@@ -1051,8 +1051,6 @@ def main():
 
 
 
-        
-
     if selected == 'Your Recommendations':
 
         if 'recs' not in st.session_state:
@@ -1104,8 +1102,11 @@ def main():
                     st.success('Url received!')
                     with st.spinner('Retrieving channel info...'):
                         time.sleep(1.5)
-                    new_channel_df = extract_channel_info(yt_url, selected_cat)
 
+                    new_channel_df = extract_channel_info(yt_url, selected_cat)
+                    if isinstance(new_channel_df, str):
+                        st.session_state['recs'] = None
+                        
                     with st.spinner('Getting your recommendations...'):
                         time.sleep(1.5)
 
