@@ -1,0 +1,8 @@
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+requests
+google-api-python-client==2.111.0
+plotly
