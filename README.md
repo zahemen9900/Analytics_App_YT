@@ -22,8 +22,8 @@ Our app goes beyond the surface of YouTube data, analyzing your likes, subscribe
 
 **Ready to Rock? Try It Out! 👇**
 
-🚀 YouTube Analytics & Recommendations App - Your ticket to YouTube stardom!
+🚀 [YouTube Analytics & Recommendations App](https://yt-analyticsapp-z.streamlit.app/) - Your ticket to YouTube stardom!
 
-**Psst...** Want to know more about the magic behind the scenes? Check out the Jupyter Notebook in this repo for a breakdown of the analysis
+**Psst...** Want to know more about the magic behind the scenes? Check out the **Jupyter Notebook** in [this repo](https://github.com/zahemen9900/YouTube-Analytics-App/blob/main/YouTube_Data_EDA.ipynb) for a breakdown of the analysis
 
 Thanks for stopping by – can't wait to see your channel soar! 🚀🌟
