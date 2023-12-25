@@ -658,7 +658,7 @@ def main():
 
     with st.sidebar:
         st.markdown(
-            """<h1 style = "font-size: 40px; font-family: Helvetica, Arial;">Feedback<h1>"""
+            """<h1 style = "font-size: 45px; font-family: Helvetica, Arial;">Feedback<h1>"""
             , unsafe_allow_html = True)
 
         feedback_menu = give_feedback()
@@ -935,7 +935,7 @@ def main():
             }
             .rounded-images {
                 border-radius: 15px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
                 overflow: hidden;
                 margin-bottom: 20px;
             }
@@ -1096,10 +1096,10 @@ def main():
 
             submit_btn = st.form_submit_button('Submit', help = 'Submit to see your channel ')
 
-            while submit_btn:
+            if submit_btn:
                 if not (yt_url.startswith('https://www.youtube.com/channel/') or yt_url.startswith('www.youtube.com/channel/') or yt_url.startswith('https://youtube.com/channel/') or yt_url.startswith('youtube.com/channel/')):
                     st.error('Please enter a valid channel URL. Also make sure your link does not contain quotation marks')
-                    break
+                    st.session_state['recs'] = None
                 else:
                     st.success('Url received!')
                     with st.spinner('Retrieving channel info...'):
@@ -1109,11 +1109,10 @@ def main():
                     with st.spinner('Getting your recommendations...'):
                         time.sleep(1.5)
 
-                    recs = generate_recommendations(df = data, yt_channel_df= new_channel_df, model = st.session_state['rf_model_main'])
+                    recs = generate_recommendations(df = data, yt_channel_df = new_channel_df, model = st.session_state['rf_model_main'])
                     
                     st.write(recs)
                     st.session_state['recs'] = recs
-                    break
         
         if st.session_state['recs'] is not None:
             rc_ = deliver_recommendations('form_auto', st.session_state['recs'])
@@ -1122,7 +1121,6 @@ def main():
 
         st.write("### Or enter your details manually below")
 
-        #    formbtn = st.button("Form")
 
         with st.expander("**Expand to enter your info manually**"):
             if "formbtn_state" not in st.session_state:
@@ -1169,14 +1167,14 @@ def main():
 
                 submit_button = st.form_submit_button(label="Submit", help = 'Submit to see your recommendations!')
 
-                while submit_button:
-                    if not any(metric is None for metric in [n_visits, n_likes, n_subs]):
-                        try:
-                            n_visits, n_likes, n_subs = int(n_visits), int(n_likes), int(n_subs)
-                        except:
-                            st.error("Couldn't proceed. Please make sure that visits, likes and subscribers are all entered and are all numeric")
-                            submit_button = False
+                if submit_button and not any(metric is None for metric in [n_visits, n_likes, n_subs]):
+                    try:
+                        n_visits, n_likes, n_subs = int(n_visits), int(n_likes), int(n_subs)
+                    except:
+                        st.error("Couldn't proceed. Please make sure that visits, likes and subscribers are all entered and are all numeric")
+                        submit_button = False
 
+                if submit_button:
                     st.success('Form submitted, Results are underway!')
                     time.sleep(1)
 
@@ -1194,15 +1192,13 @@ def main():
 
                     personalized = generate_recommendations(df = data, model = st.session_state['rf_model_main'], yt_channel_df=args)
 
+
                     st.write(personalized)
 
                     st.session_state['recommendations'] = personalized
 
-                    break
-
-            if st.session_state['recommendations'] is not None:
-                rc = deliver_recommendations('form_manual', st.session_state['recommendations'])
-
+        if st.session_state['recommendations'] is not None:
+            rc = deliver_recommendations('form_manual', st.session_state['recommendations'])
 
 
 
