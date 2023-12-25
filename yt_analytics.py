@@ -156,7 +156,7 @@ def extract_channel_info(url: str, category: str):
 
         # Since the YouTube API for channels can't retrieve video info, we need to make a separate query to get the averga visits and Likes for our channel
 
-        referrer = "https://youtube-analytics-app-zahemen9900.streamlit.app/" # Replace this with your own domain name
+        referrer = st.secrets['referrers']['referrer_site'] # Replace this with your own domain name
 
         # Define the request URL and the headers
 

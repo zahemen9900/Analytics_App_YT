@@ -6,3 +6,5 @@ scikit-learn
 requests
 google-api-python-client==2.111.0
 plotly
+streamlit-option-menu
+streamlit-extras
