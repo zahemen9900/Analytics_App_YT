@@ -532,7 +532,7 @@ def generate_recommendations(df: pd.core.frame.DataFrame, yt_channel_df, model, 
 
 # Create a form for the user to enter their email address
 def deliver_recommendations(email_form_key, recommendations):
-  st.write('#### _**Get your recommendations delivered straight into your mail!**_')
+  st.markdown("""<h4 style = "font-family: Calibri, sans-serif">Get your recommendations delivered straight into your mail! 📩<h4>""", unsafe_allow_html = True)
   with st.form(key= email_form_key):
     email_input = st.text_input('Enter your email address')
     submit_button = st.form_submit_button('Send email')
@@ -544,7 +544,6 @@ def deliver_recommendations(email_form_key, recommendations):
       email_pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
       if not re.match(email_pattern, email_input):
         st.error('Invalid email address')
-
         submit_button = False
 
       # Create a MIMEText object for the email body
@@ -569,6 +568,7 @@ def deliver_recommendations(email_form_key, recommendations):
       with st.spinner('Sending your recommendations...'):
         time.sleep(1)
       st.success('Email sent successfully!')
+      st.write("Please check your spam if you don't see it in youe inbox")
 
     except Exception as e:
       st.write(e)
@@ -594,7 +594,7 @@ def give_feedback():
       localtime = time.localtime(seconds)
       time_sent = time.asctime(localtime)
 
-      recommendations = f"{email_input} gave the following feedback on {time_sent}:\n" + recommendations.replace('#', '').replace('_', '').replace('*', '').replace('[', '').replace(']', '')
+      recommendations = f"{email_input} gave the following feedback on {time_sent}:\n\n" + recommendations.replace('#', '').replace('_', '').replace('*', '').replace('[', '').replace(']', '')
 
       msg = MIMEText(recommendations, "plain")
 
@@ -658,7 +658,7 @@ def main():
 
     with st.sidebar:
         st.markdown(
-            """<h1 style = "font-size: 45px; font-family: Helvetica, Arial;">Feedback<h1>"""
+            """<h1 style = "font-size: 45px; font-family: Arial, sans-serif;">Feedback<h1>"""
             , unsafe_allow_html = True)
 
         feedback_menu = give_feedback()
@@ -671,7 +671,7 @@ def main():
 
         title = col1.markdown(
             """
-            # <div style = "font-size: 80px; font-family: 'cooper black', 'sans-serif'; text-align: left;"><b>YouTube Channel Tip App</b></div>
+            # <div style = "font-size: 80px; font-family: Arial, sans-serif; text-align: left;"><b>YouTube Channel Tip App</b></div>
             """, unsafe_allow_html = True
         )
         yt_icon = col2.markdown(
@@ -690,7 +690,7 @@ def main():
 
         description = st.markdown(
             """
-
+            <div style = "font-family: Arial, sans-serif">
             <b><p style = "font-size: 20px;">Do you want to take your YouTube Channel to the next level, but don't know where to start?💭🤔</p><p style = "font-size: 20px;"> You've come to the right place! Here you can get personalized recommendations to boost your likes, subscribers, and visits.⚡📈</p></b>
 
             <p></p><p></p>
@@ -704,6 +704,7 @@ def main():
             </ul>
 
             <p style = "font-size: 22px;">Are you ready to grow your channel? Let's get started!✅</p>
+            </div>
 
             <p></p><p></p>
             """,
@@ -745,8 +746,8 @@ def main():
             fig = px.pie(country_data.reset_index(), values = 'count', names = 'Country', color_discrete_sequence = px.colors.diverging.Spectral)
 
             fig.update_layout(
-                title_text='<b>Country Distributions in Data</b>',
-                title_font=dict(size=30, family='cooper black'),
+                title_text='<b style = "font-family: Arial, sans-serif">Country Distributions in Data</b>',
+                title_font=dict(size=30, family='Arial'),
                 title=dict(x=0.5, xanchor='center')
                 )
             fig.update_layout(
@@ -761,7 +762,7 @@ def main():
             st.write(f'An error occured: {e}')
 
 
-        st.write("##### _**How does each Country perform Metric-wise?**_ 💭")
+        st.write("**How does each Country perform Metric-wise?** 💭")
         #For barplot
         try:
             metric_avgs = data.groupby('Continent')[['Subscribers', 'Visits', 'Likes']].mean().reset_index()
@@ -778,12 +779,12 @@ def main():
             fig3.add_trace(go.Bar(x=metric_avgs['Continent'], y=metric_avgs['Average Visits per Channel'], marker=dict(color=px.colors.sequential.Plasma)), row=1, col=2)
             fig3.add_trace(go.Bar(x=metric_avgs['Continent'], y=metric_avgs['Average Likes per Video'], marker=dict(color=px.colors.sequential.Inferno)), row=1, col=3)
 
-            fig3.update_xaxes(title_text='<b>Average Subscribers per Channel</b>', row=1, col=1)
-            fig3.update_xaxes(title_text='<b>Average Visits per Channel</b>', row=1, col=2)
-            fig3.update_xaxes(title_text='<b>Average Likes per Video</b>', row=1, col=3)
+            fig3.update_xaxes(title_text='<b style = "font-family: Arial, sans-serif;">Average Subscribers per Channel</b>', row=1, col=1)
+            fig3.update_xaxes(title_text='<b style = "font-family: Arial, sans-serif;">Average Visits per Channel</b>', row=1, col=2)
+            fig3.update_xaxes(title_text='<b style = "font-family: Arial, sans-serif;">Average Likes per Video</b>', row=1, col=3)
 
-            fig3.update_layout(title_text='<b>Metric Performances across Continents</b>',
-                        title_font=dict(size=30, family='cooper black'),
+            fig3.update_layout(title_text='<b style = "font-family: Arial, sans-serif;">Metric Performances across Continents</b>',
+                        title_font=dict(size=30, family='Arial'),
                         title=dict(x=0.5, xanchor='center'))
             fig3.update_layout(
                 autosize=False,
@@ -798,7 +799,7 @@ def main():
 
 
 
-        st.write('##### _**What are the different categories of YouTube Channels?**_ 🫧')
+        st.write('**What are the different categories of YouTube Channels?** 🫧')
         # Scatter Matrix
         try:
 
@@ -814,7 +815,7 @@ def main():
                 width = 800,
                 height = 1250,
             )
-            fig2.update_layout( title_text = '<b>Metric Correlations & Distributions</b>', 
+            fig2.update_layout( title_text = '<b style = "font-family: Arial, sans-serif">Metric Correlations & Distributions</b>', 
                               title_font = dict(size = 30, family = 'cooper black'),
                                title = dict(x = 0.5, xanchor = 'center')
                 
@@ -871,8 +872,8 @@ def main():
                 fig4 = px.pie(country_dist, values = 'count', names = 'Country',
                             color_discrete_sequence = color_sets[cluster % len(color_sets)])
 
-                fig4.update_layout(title_text='<b>Country Distribution in Cluster {}</b>'.format(cluster),
-                            title_font=dict(size=30, family='cooper black'),
+                fig4.update_layout(title_text='<b style = "font-family: Arial, sans-serif">Country Distribution in Cluster {}</b>'.format(cluster),
+                            title_font=dict(size=30, family='Arial'),
                                 title = dict(x = 0.5, xanchor = 'center'))
 
                 fig4.update_layout(autosize = True)
@@ -889,8 +890,8 @@ def main():
                 dataforplot = data['Categories'].value_counts().reset_index()
                 dataforplot['Categories'] = dataforplot['Categories'].str.replace('Salud y autoayuda', 'Health and self-help')
                 fig6 = px.pie(dataforplot, values = 'count', names = 'Categories', color_discrete_sequence = px.colors.diverging.PRGn)
-                fig6.update_layout(title_text='<b>Category Distributions</b>',
-                              title_font=dict(size=30, family='cooper black'),
+                fig6.update_layout(title_text='<b style = "font-family: Arial, sans-serif;">Category Distributions</b>',
+                              title_font=dict(size=30, family='Arial'),
                                     title = dict(x = 0.5, xanchor = 'center'))
                 fig6.update_layout(autosize = False,
                     width = 800, height = 700)
@@ -916,8 +917,8 @@ def main():
 
                     fig7 = px.bar(cluster_proportions, x = 'count', y = 'Categories', color_discrete_sequence = color_sets[continents.index(continent) % len(color_sets)])
 
-                    fig7.update_layout(title_text=f'<b>Categories in {continent}</b>',
-                                title_font=dict(size=25, family='cooper black'),
+                    fig7.update_layout(title_text=f'<b style = "font-family: Arial, sans-serif">Categories in {continent}</b>',
+                                title_font=dict(size=25, family='Arial'),
                                 title=dict(x=0.5, xanchor='center'),
                                                 autosize=False, width = 700, height = 550)
 
@@ -938,6 +939,10 @@ def main():
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
                 overflow: hidden;
                 margin-bottom: 20px;
+            }
+
+            div {
+                font-family: Arial, sans-serif;
             }
 
         </style>
@@ -1007,11 +1012,11 @@ def main():
             """
         )
 
-        st.write(
+        st.markdown(
             """
-            You might be curious about how we're generating the awesome recommendations for you. Well, the secret is **a powerful machine learning model** from the `Scikit-Learn` library, and with some clever hyperparameter-tuning and other techniques, we achieved some amazing results! 🙌
-            Here are some highlights from the training process:
-            """
+            <div style = "font-family: Arial, sans-serif;"><p>You might be curious about how we're generating the awesome recommendations for you. Well, the secret is <b>a powerful machine learning model</b> from the <code>Scikit-Learn</code> library, and with some clever hyperparameter-tuning and other techniques, we achieved some amazing results! 🙌</p>
+            <p>Here are some highlights from the training process:</p><div>
+            """, unsafe_allow_html = True
         )
 
         st.write('---')
@@ -1035,12 +1040,12 @@ def main():
         st.markdown(
             """
             <p></p>
-            <div style="font-size: 15px;">
+            <div style="font-size: 15px; font-family: Arial, sans-serif">
             <h5><b>More on Data Used</b></h5>
 
             <p>As an aspiring Top YouTuber, you deserve to compare yourself with the best of the best. That's why we used a curated dataset of the world's top 1000 YouTubers, to give you accurate assessments and useful tips to level up your game. We hope you enjoyed the recommendation as much as we enjoyed making this project 😊</p>
 
-            <p>If you have any suggestions or recommendations, feel free to leave them in the side-bar to your left, and I'd really appreciate it</p>
+            <p>If you have any suggestions or recommendations, feel free to leave them in the <b>side-bar to your left ↖️</b>, and I'd really appreciate it</p>
 
             <p>If you are curious about how we made this app possible, or want to explore more resources for the project, you can check out <b>Zahemen's GitHub</b> <a href = "https://github.com/zahemen9900/YouTube-Analytics-App">here</a>. You will find the source code, the data, and more.</p>
             <p>Leave a star on my GitHub if you enjoyed using the app, and thank you for your time and attention!</p></div>
