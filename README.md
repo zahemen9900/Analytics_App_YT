@@ -4,7 +4,7 @@ Hello, fellow content creator! 🎥
 
 Do you ever feel overwhelmed by the YouTube landscape, wondering how to stand out from the crowd and grow your audience? We know – the path to YouTube fame is not always a walk in the park.
 
-But don't worry – we're here to help! 🤝 
+But don't worry – we've got your back! 🤝 
 
 Let us introduce you to our **YouTube Analytics & Recommendations App** – your ultimate tool to unleash the power of your channel!
 

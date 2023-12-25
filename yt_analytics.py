@@ -1047,7 +1047,7 @@ def main():
 
             <p>If you have any suggestions or recommendations, feel free to leave them in the <b>side-bar to your left ↖️</b>, and I'd really appreciate it</p>
 
-            <p>If you are curious about how we made this app possible, or want to explore more resources for the project, you can check out <b>Zahemen's GitHub</b> <a href = "https://github.com/zahemen9900/YouTube-Analytics-App">here</a>. You will find the source code, the data, and more.</p>
+            <p>If you are curious about how we made this app possible, or want to explore more resources for the project, you can check out <b>Zahemen's GitHub</b> <a href = "https://github.com/zahemen9900/YouTube-Analytics-App">here</a> and <a href = "https://github.com/zahemen9900/Analytics_App_YT">here</a> . You will find the source code, the data, and more.</p>
             <p>Leave a star on my GitHub if you enjoyed using the app, and thank you for your time and attention!</p></div>
 
             """,
