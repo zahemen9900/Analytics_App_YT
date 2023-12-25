@@ -599,8 +599,8 @@ def give_feedback():
       msg = MIMEText(recommendations, "plain")
 
       # Add the email headers
-      my_email = st.secrets['email']['my_email']
-      app_email = st.secrets['email']['app_email']
+      my_email = st.secrets['emails']['my_email']
+      app_email = st.secrets['emails']['app_email']
       password = st.secrets['remote_ps']['password']
 
       msg['From'] = app_email
@@ -658,7 +658,7 @@ def main():
 
     with st.sidebar:
         st.markdown(
-            """<h1 style = "font-size: 40px; font-family: Helvetica, Arial;">Recommendations<h1>"""
+            """<h1 style = "font-size: 30px; font-family: Helvetica, Arial;">Feedback<h1>"""
             , unsafe_allow_html = True)
 
         feedback_menu = give_feedback()
