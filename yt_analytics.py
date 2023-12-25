@@ -658,7 +658,7 @@ def main():
 
     with st.sidebar:
         st.markdown(
-            """<h1 style = "font-size: 30px; font-family: Helvetica, Arial;">Feedback<h1>"""
+            """<h1 style = "font-size: 40px; font-family: Helvetica, Arial;">Feedback<h1>"""
             , unsafe_allow_html = True)
 
         feedback_menu = give_feedback()
@@ -947,7 +947,7 @@ def main():
             <p>PewDiePie is a Swedish YouTuber who is known for his gaming videos, comedy sketches, and meme reviews. He is <b>the most-subscribed individual creator</b> on YouTube with over <b>110 million subscribers</b>. Mr Beast is an American YouTuber who is famous for his expensive stunts, philanthropic acts, and viral challenges. He has over <b>80 million subscribers</b> and is one of the highest-earning YouTubers in the world.</p>
             <div class="rounded-images">
                 <img src="https://hips.hearstapps.com/hmg-prod/images/pewdiepie_gettyimages-501661286.jpg?resize=1200:*" alt="PewDiePie" width="350", height = "350">
-                <img src="https://wallpapers.com/images/hd/mr-beast-bright-screen-background-he6y102ildr4ca8q.jpg" alt="Mr Beast" width="350.2", height = "350">
+                <img src="https://wallpapers.com/images/hd/mr-beast-bright-screen-background-he6y102ildr4ca8q.jpg" alt="Mr Beast" width="350.3", height = "350">
             </div>
             <p></p><p></p>
         </div>
@@ -957,7 +957,7 @@ def main():
             <p>The Ellen Show is an American daytime television variety comedy talk show hosted by Ellen DeGeneres. It has been running for <b>19 seasons</b> and has won numerous awards, including 11 Daytime Emmys for Outstanding Talk Show Entertainment. Katy Perry is an American singer, songwriter, and television personality. She is one of the best-selling music artists of all time, with over <b>143 million records sold worldwide</b>. She has nine U.S. number one singles and has received various accolades, including five American Music Awards and a Brit Award</p>
             <div class="rounded-images">
                 <img src="https://m.media-amazon.com/images/M/MV5BODA5ZDQyMzYtZWQwMy00MDQ1LWE2OGUtNGYyNTk0Y2NhZGM4XkEyXkFqcGdeQXVyMTkzODUwNzk@._V1_.jpg" alt="The Ellen Show" width="350" height = "450">
-                <img src="https://m.media-amazon.com/images/M/MV5BMjE4MDI3NDI2Nl5BMl5BanBnXkFtZTcwNjE5OTQwOA@@._V1_.jpg" alt="Katy Perry" width="350.2" height = "450">
+                <img src="https://m.media-amazon.com/images/M/MV5BMjE4MDI3NDI2Nl5BMl5BanBnXkFtZTcwNjE5OTQwOA@@._V1_.jpg" alt="Katy Perry" width="350.3" height = "450">
             </div>
             <p></p><p></p>
         </div>
@@ -967,7 +967,7 @@ def main():
             <p>Techno Gamers is an Indian gaming YouTuber who creates videos of gameplays and live streams of <b>GTA 5</b>, <b>Minecraft</b>, <b>Call of Duty</b>, and more. He has <b>over 37 million subscribers</b> and is one of the most popular gamers in India. Kimberly Loaiza is a Mexican internet personality and singer who started her YouTube career in 2016. She is currently the seventh most-followed user on TikTok and has over <b>40 million subscribers</b> on YouTube. She also has a music career and has released several singles, such as <em><b>Enamorarme</b>, <b>Patán</b></em>, and <em><b>Kitty</b></em>.</p>
             <div class="rounded-images">
                 <img src="https://img.gurugamer.com/resize/740x-/2021/04/02/youtuber-ujjwal-techno-gamerz-3aa0.jpg" alt="Techno Gamerz" width="350" height = "450">
-                <img src="https://m.media-amazon.com/images/I/71G48FB73WL._AC_UF1000,1000_QL80_.jpg" alt="Kimberly Loaiza" width="350.2" height = "450">
+                <img src="https://m.media-amazon.com/images/I/71G48FB73WL._AC_UF1000,1000_QL80_.jpg" alt="Kimberly Loaiza" width="350.3" height = "450">
             </div>
             <p></p><p></p>
         </div>
@@ -977,7 +977,7 @@ def main():
             <p>SSSniperWolf is a British-American YouTuber who is known for her gaming and reaction videos. She has over <b>30 million subscribers</b> and is one of the most-watched female gamers on YouTube. JackSepticEye is an Irish YouTuber who is also known for his gaming and vlog videos. He has over <b>27 million subscribers</b> and is one of the most influential Irish online personalities. He has also appeared in the film Free Guy and released a biographical documentary called <b><em>How Did We Get Here?</em></b></p>
             <div class="rounded-images">
                 <img src="https://ih1.redbubble.net/image.2189561281.9428/mwo,x1000,ipad_2_skin-pad,750x1000,f8f8f8.u1.jpg" alt="SSSniper Wolf" width="350" height = "420">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Jacksepticeye_by_Gage_Skidmore.jpg/1200px-Jacksepticeye_by_Gage_Skidmore.jpg" alt="JackSepticEye" width="350.2" height = "420">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Jacksepticeye_by_Gage_Skidmore.jpg/1200px-Jacksepticeye_by_Gage_Skidmore.jpg" alt="JackSepticEye" width="350.3" height = "420">
             </div>
             <p></p><p></p>
         </div>
@@ -987,7 +987,7 @@ def main():
             <p>JessNoLimit is an Indonesian gaming YouTuber and Instagram star who is known for his Mobile Legends gameplays. He has over <b>42 million subscribers</b> and is the <b>third most-subscribed YouTuber in Indonesia</b>. Daddy Yankee is a Puerto Rican rapper, singer, songwriter, and actor who is considered the <b><em>"King of Reggaeton"</em></b>. He has sold over <b>30 million records worldwide</b> and has won numerous awards, including five Latin Grammy Awards and two Billboard Music Awards. He is best known for his hit songs like <em><b>Gasolina</b>, <b>Despacito</b></em>, and <em><b>Con Calma</b></em>.</p>
             <div class="rounded-images">
                 <img src="https://akcdn.detik.net.id/visual/2023/05/05/jess-no-limit-dan-sisca-kohl-2_43.png?w=650&q=90" alt="JessNoLimit" width="350" height = "300">
-                <img src="https://people.com/thmb/eT6A-wncUzuDs-XV08qRSd_gSUk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(688x281:690x283)/Daddy-Yankee-Retirement-120623-a855484297944821ad14c8b98453b6a5.jpg" alt="Daddy Yankee" width="350.2" height = "300">
+                <img src="https://people.com/thmb/eT6A-wncUzuDs-XV08qRSd_gSUk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(688x281:690x283)/Daddy-Yankee-Retirement-120623-a855484297944821ad14c8b98453b6a5.jpg" alt="Daddy Yankee" width="350.3" height = "300">
             </div>
         </div>
 
@@ -1163,21 +1163,20 @@ def main():
 
                 n_visits = st.text_input('How many Visits do you have on average?')
 
-                n_likes = st.text_input('How many like sdo you get on average?')
+                n_likes = st.text_input('How many likes do you get on average?')
 
                 n_subs = st.text_input('How many subscribers do you have?')
 
                 submit_button = st.form_submit_button(label="Submit", help = 'Submit to see your recommendations!')
 
-                if submit_button and not any(metric is None for metric in [n_visits, n_likes, n_subs]):
-                    try:
-                        n_visits, n_likes, n_subs = int(n_visits), int(n_likes), int(n_subs)
-                    except:
-                        st.error("Couldn't proceed. Please make sure that visits, likes and subscribers are all entered and are all numeric")
-                        submit_button = False
+                while submit_button:
+                    if not any(metric is None for metric in [n_visits, n_likes, n_subs]):
+                        try:
+                            n_visits, n_likes, n_subs = int(n_visits), int(n_likes), int(n_subs)
+                        except:
+                            st.error("Couldn't proceed. Please make sure that visits, likes and subscribers are all entered and are all numeric")
+                            submit_button = False
 
-
-                if submit_button:
                     st.success('Form submitted, Results are underway!')
                     time.sleep(1)
 
@@ -1195,10 +1194,11 @@ def main():
 
                     personalized = generate_recommendations(df = data, model = st.session_state['rf_model_main'], yt_channel_df=args)
 
-
                     st.write(personalized)
 
                     st.session_state['recommendations'] = personalized
+
+                    break
 
             if st.session_state['recommendations'] is not None:
                 rc = deliver_recommendations('form_manual', st.session_state['recommendations'])
