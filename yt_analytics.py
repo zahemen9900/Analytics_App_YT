@@ -97,6 +97,7 @@ popular_countries = [
 
 
 #function to retrieve youtube channel info
+
 @st.cache_data
 def extract_channel_info(url: str, category: str):
     """
@@ -152,6 +153,9 @@ def extract_channel_info(url: str, category: str):
                 'Country': country_name, 
                 'Continent': continent_mapping.get(country_name, 'Unknown Continent')
             }
+
+
+        st.session_state['channel_name'] = yt_name
 
 
         # Since the YouTube API for channels can't retrieve video info, we need to make a separate query to get the averga visits and Likes for our channel
@@ -541,13 +545,13 @@ def deliver_recommendations(email_form_key, recommendations):
   if submit_button:
     try:
       # Validate the email input using a regular expression
-      email_pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-      if not re.match(email_pattern, email_input):
-        st.error('Invalid email address')
-        submit_button = False
+      #email_pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+      #if not re.match(email_pattern, email_input):
+      #  st.error('Invalid email address')
+      #  submit_button = False
 
       # Create a MIMEText object for the email body
-      recommendations = recommendations.replace('#', '').replace('_', '').replace('*', '').replace('[', '').replace(']', '')
+      recommendations = f"Hey there, {st.session_state['channel_name']}, here are your recommendations:\n" + recommendations.replace('#', '').replace('_', '').replace('*', '').replace('[', '').replace(']', '')
       msg = MIMEText(recommendations, "plain")
 
       app_email = st.secrets['emails']['app_email']
@@ -568,7 +572,7 @@ def deliver_recommendations(email_form_key, recommendations):
       with st.spinner('Sending your recommendations...'):
         time.sleep(1)
       st.success('Email sent successfully!')
-      st.write("Please check your spam if you don't see it in youe inbox")
+      st.write("Please check your spam if you don't see it in your inbox")
 
     except Exception as e:
       st.write(e)
@@ -580,7 +584,7 @@ def give_feedback():
   with st.form(key='feedback_form'):
     email_input = st.text_input('Your email address _(so we can reach out to you)_ or just your first name')
     recommendations = st.text_input('Please enter feedback or recommendations here')
-    submit_button = st.form_submit_button('Send email')
+    submit_button = st.form_submit_button('Submit', help = 'deliver feedback')
 
 
   while submit_button:
@@ -594,7 +598,7 @@ def give_feedback():
       localtime = time.localtime(seconds)
       time_sent = time.asctime(localtime)
 
-      recommendations = f"{email_input} gave the following feedback on {time_sent}:\n\n" + recommendations.replace('#', '').replace('_', '').replace('*', '').replace('[', '').replace(']', '')
+      recommendations = f"{email_input} gave the following feedback on {time_sent}:\n\n" + recommendations
 
       msg = MIMEText(recommendations, "plain")
 
@@ -784,11 +788,13 @@ def main():
             fig3.update_layout(title_text='<b style = "font-family: Arial, sans-serif;">Metric Performances across Continents</b>',
                         title_font=dict(size=30, family='Arial'),
                         title=dict(x=0.5, xanchor='center'))
+            
             fig3.update_layout(
                 autosize=True,
                 width = 750,
-                height = 500)
-            #fig3.update_layout(margin=dict(l=25, r=25, t=100, b=50))
+                height = 500,
+                showlegend = False
+            )
 
             st.plotly_chart(fig3)
 
