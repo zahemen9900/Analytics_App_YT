@@ -98,6 +98,8 @@ popular_countries = [
 
 #function to retrieve youtube channel info
 
+st.session_state['channel_name'] = ''
+
 @st.cache_data
 def extract_channel_info(url: str, category: str):
     """
@@ -551,7 +553,7 @@ def deliver_recommendations(email_form_key, recommendations):
       #  submit_button = False
 
       # Create a MIMEText object for the email body
-      recommendations = f"Hey there, {st.session_state['channel_name']}, here are your recommendations:\n" + recommendations.replace('#', '').replace('_', '').replace('*', '').replace('[', '').replace(']', '')
+      recommendations = f"Hey there, {st.session_state['channel_name']}, here are your recommendations:\n\n\n" + recommendations.replace('#', '').replace('_', '').replace('*', '').replace('[', '').replace(']', '')
       msg = MIMEText(recommendations, "plain")
 
       app_email = st.secrets['emails']['app_email']
