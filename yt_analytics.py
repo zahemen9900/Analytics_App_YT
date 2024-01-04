@@ -1146,6 +1146,7 @@ def main():
                 col_01, col_02 = st.columns([.5, .5])
 
                 channel_name = col_01.text_input('What is your channel name?', 'eg. zahemen9900')
+                st.session_state['channel_name'] = channel_name
 
                 selected_country = col_02.selectbox("Select your country", popular_countries)
 
