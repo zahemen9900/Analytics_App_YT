@@ -748,12 +748,10 @@ def main():
             fig.update_layout(
                 title_text='<b style = "font-family: Arial, sans-serif">Country Distributions in Data</b>',
                 title_font=dict(size=30, family='Arial'),
-                title=dict(x=0.5, xanchor='center')
-                )
-            fig.update_layout(
-                autosize = False,
-                width = 800,
-                height = 700
+                title=dict(x=0.5, xanchor='center'),
+                autosize = True,
+                width = 650,
+                height = 500
             )
 
             st.plotly_chart(fig)
@@ -787,9 +785,9 @@ def main():
                         title_font=dict(size=30, family='Arial'),
                         title=dict(x=0.5, xanchor='center'))
             fig3.update_layout(
-                autosize=False,
-                width = 800,
-                height = 650)
+                autosize=True,
+                width = 750,
+                height = 500)
             #fig3.update_layout(margin=dict(l=25, r=25, t=100, b=50))
 
             st.plotly_chart(fig3)
@@ -812,8 +810,8 @@ def main():
 
             fig2.update_layout(
                 autosize = False,
-                width = 800,
-                height = 1250,
+                width = 650,
+                height = 1000,
             )
             fig2.update_layout( title_text = '<b style = "font-family: Arial, sans-serif">Metric Correlations & Distributions</b>', 
                               title_font = dict(size = 30, family = 'cooper black'),
@@ -894,7 +892,7 @@ def main():
                               title_font=dict(size=30, family='Arial'),
                                     title = dict(x = 0.5, xanchor = 'center'))
                 fig6.update_layout(autosize = False,
-                    width = 800, height = 700)
+                    width = 650, height = 500)
 
                 st.plotly_chart(fig6)
 
@@ -920,7 +918,7 @@ def main():
                     fig7.update_layout(title_text=f'<b style = "font-family: Arial, sans-serif">Categories in {continent}</b>',
                                 title_font=dict(size=25, family='Arial'),
                                 title=dict(x=0.5, xanchor='center'),
-                                                autosize=False, width = 700, height = 550)
+                                                autosize=False, width = 650, height = 420)
 
                     st.plotly_chart(fig7)
 
@@ -1137,7 +1135,29 @@ def main():
 
             with st.form(key="channel_form"):
 
-                channel_name = st.text_input('What is your channel name?', 'eg. zahemen9900')
+                col_01, col_02 = st.columns([.5, .5])
+
+                channel_name = col_01.text_input('What is your channel name?', 'eg. zahemen9900')
+
+                selected_country = col_02.selectbox("Select your country", popular_countries)
+
+                default_continent = continent_mapping.get(selected_country, 'Unknown')
+
+                continents = data['Continent'].unique()
+                continents = [continent for continent in continents]
+
+                # Get the index of the default continent in the list of continents
+                # If the default continent is not in the list, use 0 as the index
+                default_index = continents.index(default_continent) if default_continent in continents else 0
+
+                selected_continent = col_01.selectbox("Select your Continent", continents, index = default_index)
+
+                n_visits = col_02.text_input('How many Visits do you have on average?')
+
+                n_likes = col_01.text_input('How many likes do you get on average?')
+
+                n_subs = col_02.text_input('How many subscribers do you have?')
+
                 st.write("Select the category of your videos:")
                 selected_category = st.radio("Options", (
                     "Animation", "Toys", "Movies", "Video Games", "Music and Dance",
@@ -1149,27 +1169,6 @@ def main():
                     "Social Issues", "Photography", "Spirituality", "Language Learning",
                     "Sports and Athletics", "Entertainment News", "Pop Culture", "Podcasts"
                 ))
-
-                selected_country = st.selectbox("Select your country", popular_countries)
-
-                default_continent = continent_mapping.get(selected_country, 'Unknown')
-
-                continents = data['Continent'].unique()
-                continents = [continent for continent in continents]
-
-                # Get the index of the default continent in the list of continents
-                # If the default continent is not in the list, use 0 as the index
-                default_index = continents.index(default_continent) if default_continent in continents else 0
-
-                selected_continent = st.selectbox("Select your Continent", continents, index = default_index)
-
-
-
-                n_visits = st.text_input('How many Visits do you have on average?')
-
-                n_likes = st.text_input('How many likes do you get on average?')
-
-                n_subs = st.text_input('How many subscribers do you have?')
 
                 submit_button = st.form_submit_button(label="Submit", help = 'Submit to see your recommendations!')
 
